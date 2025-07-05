@@ -1,0 +1,8 @@
+{
+    "profiles": {
+        "TimesheetsLogger": {
+            "commandName": "Project",
+            "commandLineArgs": "lw"
+        }
+    }
+}
