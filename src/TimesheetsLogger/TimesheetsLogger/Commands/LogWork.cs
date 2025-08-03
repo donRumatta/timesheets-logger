@@ -85,7 +85,7 @@ namespace TimesheetsLogger.Commands
 
                         daySeconds += item.SpentSeconds;
 
-                        //await SendToJira(item, httpClient);
+                        await SendToJira(item, httpClient);
                         await parser.SetProcessed(item.Line);
 
                         AnsiConsole.MarkupLine($"[green]PROCESSED {item}[/]");
@@ -134,7 +134,7 @@ namespace TimesheetsLogger.Commands
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var credsString = $"{jiraOptions.Login}:${jiraOptions.Password}";
+            var credsString = $"{jiraOptions.Login}:{jiraOptions.Password}";
             var credsBytes = Encoding.Default.GetBytes(credsString);
             var authHeader = "Basic " + Convert.ToBase64String(credsBytes);
             client.DefaultRequestHeaders.Add("Authorization", authHeader);
